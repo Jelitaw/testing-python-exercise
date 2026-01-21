@@ -1,0 +1,19 @@
+[tool.tox]
+env_list = ["py", "coverage"]
+skips_dist = true
+
+[tool.tox.testenv.py]
+description = "Run unit and integration tests"
+deps = ["-r requirements.txt"]
+commands = [
+    "python -m pytest tests/unit",
+    "python -m pytest tests/integration"
+]
+
+[tool.tox.testenv.coverage]
+description = "Generate coverage report"
+deps = ["-r requirements.txt", "coverage"]
+commands = [
+    "coverage run -m pytest",
+    "coverage html"
+]
